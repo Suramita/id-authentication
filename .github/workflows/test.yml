@@ -1,0 +1,44 @@
+name: Analysis
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: Unit Tests
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        dir: [backend, frontend]
+        include:
+          - dir: backend
+            token: SONAR_TOKEN_BACKEND
+            triggers: ('frontend/' 'charts/frontend')
+          - dir: frontend
+            token: SONAR_TOKEN_FRONTEND
+            triggers: ('backend/' 'charts/backend')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bcgov-nr/action-test-and-analyse-java@main
+        with:
+          commands: |
+            ./mvnw test
+          dir: ${{ matrix.dir }}
+          java-cache: maven
+          java-distribution: temurin
+          java-version: "17"
+          sonar_args: |
+            -Dsonar.exclusions=**/coverage/**
+            -Dsonar.organization=bcgov-nr
+            -Dsonar.projectKey=bcgov-nr_action-test-and-analyse-java_${{ matrix.dir }}
+          sonar_token: ${{ secrets[matrix.token] }}
+          triggers: ${{ matrix.triggers }}
+          repository: bcgov/quickstart-openshift
+          branch: main
