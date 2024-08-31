@@ -85,35 +85,17 @@
     </modules>
 
     <properties>
-        <!-- Properties for versioning and encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Versions for dependencies and plugins -->
+        <!-- Java Compiler Versions -->
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.version>3.8.0</maven.compiler.version>
+
+        <!-- Plugin Versions -->
         <maven.javadoc.version>3.2.0</maven.javadoc.version>
-        <maven.swagger.version>2.9.2</maven.swagger.version>
-        <maven.jacoco.version>0.8.5</maven.jacoco.version>
-        <maven.sonar.version>3.7.0.1746</maven.sonar.version>
-        <powermock.version>2.0.0</powermock.version>
-        <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
-        <junit.version>4.13.1</junit.version>
-        <mockito.version>2.23.4</mockito.version>
-        <byte-buddy.version>1.9.3</byte-buddy.version>
-        <lombok.version>1.18.22</lombok.version>
-        <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
-        <spring.batch.version>4.0.1.RELEASE</spring.batch.version>
-        <spring.security.test.version>5.0.5.RELEASE</spring.security.test.version>
-        <spring-cloud-config.version>2.0.0.RELEASE</spring-cloud-config.version>
-        <javax.validation-api.version>2.0.1.Final</javax.validation-api.version>
-        <hibernate.validator.version>6.0.12.Final</hibernate.validator.version>
-        <jackson.version>2.12.1</jackson.version>
-        <postgresql.version>42.2.2</postgresql.version>
-        <commons.lang.version>3.7</commons.lang.version>
-        <commons.codec.version>1.11</commons.codec.version>
-        <sourceafis.version>3.4.0</sourceafis.version>
-        <ant.version>1.10.12</ant.version>
+        <maven.gpg.version>1.5</maven.gpg.version>
+        <sonar-maven.version>3.9.0.2155</sonar-maven.version>
     </properties>
 
     <build>
@@ -133,7 +115,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin.version}</version>
+                <version>2.22.0</version>
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
@@ -156,7 +138,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
+                <version>${maven.gpg.version}</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -192,30 +174,14 @@
                 </executions>
             </plugin>
 
-            <!-- Maven Dependency Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- SonarQube Scanner for Maven -->
+            <!-- SonarCloud Scanner for Maven -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>${maven.sonar.version}</version>
+                <version>${sonar-maven.version}</version>
+                <configuration>
+                    <!-- You can add SonarCloud specific configuration here if needed -->
+                </configuration>
             </plugin>
         </plugins>
     </build>
