@@ -102,7 +102,7 @@
         <kernel-pinvalidator.version>${kernel.parent.version}</kernel-pinvalidator.version>
         <kernel-templatemanager-velocity.version>${kernel.parent.version}</kernel-templatemanager-velocity.version>
         <kernel-logger-logback.version>${kernel.parent.version}</kernel-logger-logback.version>
-        <kernel-dataaccess-hibernate.version>${kernel.parent.version}</kernel-dataaccess-hibernate.version>
+        <kernel-dataaccess-hibernate.version>1.3.0</kernel-dataaccess-hibernate.version>
         <kernel-cbeffutil-api.version>${kernel.parent.version}</kernel-cbeffutil-api.version>
         <kernel-templatemanager-velocity.version>${kernel.parent.version}</kernel-templatemanager-velocity.version>
         <kernel-auth-adapter.version>${kernel.parent.version}</kernel-auth-adapter.version>
@@ -136,7 +136,7 @@
         <lombok.version>1.18.22</lombok.version>
 
         <!-- Spring Boot -->
-        <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
+        <spring.boot.version>3.3.7</spring.boot.version>
         <spring.batch.version>4.0.1.RELEASE</spring.batch.version>
         <spring.security.test.version>5.0.5.RELEASE</spring.security.test.version>
         <spring-cloud-config.version>2.0.0.RELEASE</spring-cloud-config.version>
