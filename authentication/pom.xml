@@ -87,7 +87,7 @@
     <properties>
         <authentication.parent.version>${project.version}</authentication.parent.version>
         <authentication-core.version>${authentication.parent.version}</authentication-core.version>
-        <authentication-filter-api.version>${authentication.parent.version}</authentication-filter-api.version>
+        <authentication-filter-api.version>1.3.0</authentication-filter-api.version>
         <authentication-common.version>${authentication.parent.version}</authentication-common.version>
         <authentication-authtypelockfilter-impl.version>${authentication.parent.version}</authentication-authtypelockfilter-impl.version>
         <authentication-hotlistfilter-impl.version>${authentication.parent.version}</authentication-hotlistfilter-impl.version>
